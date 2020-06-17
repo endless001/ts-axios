@@ -1,8 +1,8 @@
 import {AxiosRequestConfig} from './types'
 import xhr from './xhr'
 
-function axios(config:AxiosRequestConfig){
-    xhr(config)
+async function axios(config:AxiosRequestConfig){
+    await xhr(config)
 }
 
-import { format } from "path";
+export default axios
