@@ -5,11 +5,12 @@ import { transformRequest, transformResponse } from './helpers/data'
 import { processHeaders } from './helpers/headers'
 
 
-async function axios(config:AxiosRequestConfig){
+function axios(config:AxiosRequestConfig):AxiosPromise{
      processConfig(config)
-     let res = await xhr(config)
-     return  transformResponseData(res)
-}
+     return xhr(config).then(res => {
+          return transformResponseData(res)
+        })
+ }
 
 function processConfig(config:AxiosRequestConfig):void{
      config.url = transformURL(config)
